@@ -18,7 +18,7 @@ const window = Dimensions.get('window');
 const ACCESS_TOKEN = 'access_token'
 
 
-class Register extends Component {
+class LogIn extends Component {
 
 // Constructor
 constructor(){
@@ -32,6 +32,21 @@ this.state = {
 
 
 }
+
+}
+
+
+redirect(routeName,token){
+
+  this.props.navigator.push(
+    {
+      name:routeName,
+      passProps:{
+        accessToken : token
+      }
+    }
+    )
+
 
 }
 
@@ -94,7 +109,11 @@ onSignInPress(){
          let token = authData.uid
          //alert(token)
          this.storeToken(token)
-            
+         //Update uid to firebase database ? : not necessry
+
+
+         // Seller is authnticated , redirect him to myaccount page
+          this.redirect('categories',token)
     }
 
     
@@ -131,7 +150,7 @@ onSignInPress(){
       <TouchableHighlight
         onPress = {this.onSignInPress.bind(this)}
       >
-      <Text>SignIn</Text>
+      <Text>Log In</Text>
       </TouchableHighlight>
       
       </View>
@@ -170,4 +189,4 @@ const styles = StyleSheet.create({
  
 });
 
-export default Register
+export default LogIn

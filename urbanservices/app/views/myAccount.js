@@ -15,15 +15,31 @@ import {
 
 
 
-class LandingPage extends Component {
+class MyAccount extends Component {
 
+// Constructor
+constructor(props){
+super(props)
+this.state = {
+  accessToken : this.props.accessToken,
+ 
+}
+
+}
+
+
+finduserName(uid){
+  new Firebase("https://todoappmuneer.firebaseio.com/production/users")
+
+}
  
   render() {
 
     return (
       <View style={styles.container}>
         <Text>My Account Details</Text>
-
+        <Text>Your accessToken :</Text>
+        <Text>{this.state.accessToken}</Text>
       </View>
 
 
@@ -43,4 +59,4 @@ const styles = StyleSheet.create({
  
 });
 
-export default LandingPage
+export default MyAccount

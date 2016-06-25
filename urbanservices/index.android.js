@@ -18,7 +18,12 @@ import {
 import Root from './app/views/root'
 import Landingpage from './app/views/home'
 import Register from './app/views/register'
-import SignIn from './app/views/signin'
+import LogIn from './app/views/login'
+import MyAccount from './app/views/myAccount'
+import Categories from './app/views/categories'
+import WaterCanOfferView from './app/views/waterCanOfferView'
+
+
 
 
 
@@ -41,18 +46,50 @@ renderScene(route,navigator){
       return <Register  navigator={navigator}/>
     }
 
-  if(route.name == 'signin'){
-    return <SignIn  navigator={navigator}/>
+  if(route.name == 'login'){
+    return <LogIn  navigator={navigator}/>
   }
+
+  if(route.name == 'myaccount'){
+    return <MyAccount  navigator={navigator} {...route.passProps}/>
+  }
+
+if(route.name == 'categories'){
+    return <Categories  navigator={navigator} {...route.passProps}/>
+  }
+
+if(route.name == 'watercanOfferView'){
+    return <Categories  navigator={navigator} {...route.passProps}/>
+  }
+
+
 
   
 }
 
 configureScene(route){
 
-if(route.name == 'signin'){
-    return Navigator.SceneConfigs.FloatFromLeft
+  let fromleft = Navigator.SceneConfigs.FloatFromLeft
+
+  switch(route.name){
+    case 'login':
+      return Navigator.SceneConfigs.FloatFromLeft
+
+    case 'myaccount':
+      return Navigator.SceneConfigs.FloatFromLeft  
+
+    case 'register':
+      return Navigator.SceneConfigs.FloatFromBottom 
+     
+     case 'categories':
+      return Navigator.SceneConfigs.HorizontalSwipeJump
+    
+      case 'watercanOfferView':
+      return fromleft
   }
+
+
+
 
 }
 

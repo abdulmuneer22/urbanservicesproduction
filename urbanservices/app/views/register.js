@@ -35,6 +35,23 @@ this.state = {
 
 }
 
+redirect(routeName){
+
+  this.props.navigator.push(
+    {
+      name:routeName
+      
+    }
+    )
+
+
+}
+
+
+
+
+
+
  onRegisterPress(){
 
   let user_name = this.state.name       
@@ -51,11 +68,17 @@ this.state = {
                     {alert(error.code)}
                     else{
                       //Update this user to https://todoappmuneer.firebaseio.com/ 
+                       
                           app.update({
+                             
                               name: this.state.name,
                               email : this.state.email,
                               });
-                    alert("Your Account Created Successfully !!")
+                    //alert("Your Account Created Successfully !!")
+                   
+                    this.redirect('signin')
+
+
                     }
                     }
 

@@ -1,4 +1,9 @@
-'use strict'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -7,28 +12,22 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  BackAndroid,
-  AsyncStorage
+  Navigator
 } from 'react-native';
 
 
-
-
-
-class LandingPage extends Component {
+class WaterCanOfferView extends Component {
 
  
+
   render() {
-
     return (
-      <View style={styles.container}>
-        <Text>My Account Details</Text>
+    <View style={styles.container}>
+          
+          <Text>Water Can Offer View</Text>
+    </View>
 
-      </View>
 
-
-        
-      
     );
   }
 }
@@ -39,8 +38,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  }
- 
+    margin:30
+  },
 });
 
-export default LandingPage
+
+export default WaterCanOfferView

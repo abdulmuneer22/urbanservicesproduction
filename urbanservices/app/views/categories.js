@@ -1,3 +1,4 @@
+ 
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -15,39 +16,37 @@ import {
   Navigator
 } from 'react-native';
 
-import Login from './login'
-import LandingPage from './home'
-import Register from './register'
 
 
-class Root extends Component {
+class Categories extends Component {
 
-  navigate(routeName){
+redirect(routeName){
 
-    this.props.navigator.push({
-      name : routeName
-    })
+  this.props.navigator.push(
+    {
+      name:routeName
+     
+    }
+    )
 
-  }
 
+}
 
   render() {
     return (
     <View style={styles.container}>
-          
+          <Text>Services</Text>
+         
+         
+            
           <TouchableHighlight
-          onPress = {this.navigate.bind(this,'register')}
+          onPress = {this.redirect('watercanOfferView')}
           >
-          <Text>Register</Text>
+          <Text>Water Can</Text>
           </TouchableHighlight>
           
-          <Text></Text>
-
-          <TouchableHighlight
-          onPress = {this.navigate.bind(this,'login')}
-          >
-          <Text>Login</Text>
-          </TouchableHighlight>
+          
+         
     </View>
 
 
@@ -66,4 +65,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Root
+export default Categories
