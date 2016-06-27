@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import Login from './login'
-import LandingPage from './home'
+//import LandingPage from './home'
 import Register from './register'
 
 

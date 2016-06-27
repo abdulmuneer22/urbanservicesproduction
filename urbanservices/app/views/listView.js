@@ -12,25 +12,46 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  ListView
 } from 'react-native';
 
+import Firebase from 'firebase';
 
-class WaterCanOfferView extends Component {
+const FirebaseURL = "https://todoappmuneer.firebaseio.com/production/products/"
+var ref = new Firebase(FirebaseURL)
 
- 
+class ListViewTest extends Component {
 
-  render() {
-    return (
-    <View style={styles.container}>
-          
-          <Text>Water Can Offer View</Text>
+
+renderItem(item){
+  return(
+    <View>
+      <Text>List View Test</Text>
     </View>
 
+  )
 
-    );
-  }
+
 }
+
+render(){
+    return(
+
+     <View>
+     
+    
+    </View>
+    );
+
+  }
+
+
+}
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -43,4 +64,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default WaterCanOfferView
+export default ListViewTest
