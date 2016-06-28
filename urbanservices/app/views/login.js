@@ -113,7 +113,7 @@ onSignInPress(){
 
 
          // Seller is authnticated , redirect him to myaccount page
-          this.redirect('categories',token)
+          this.redirect('mainScreen',token)
     }
 
     

@@ -14,6 +14,7 @@ import {
   TouchableHighlight,
   Navigator,
   ListView,
+  ScrollView,
   Image,
   Dimensions
 } from 'react-native';
@@ -80,6 +81,8 @@ getProducts(){
 
      <View style={styles.container}>
       <Text></Text>
+      <ScrollView showsVerticalScrollIndicator = {false}>
+
       <ListView
         dataSource = {this.state.dataSource}
         renderRow = {
@@ -124,6 +127,8 @@ getProducts(){
       
      
       />
+
+      </ScrollView>
     
     </View>
     );

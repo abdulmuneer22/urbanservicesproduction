@@ -24,13 +24,6 @@ import Categories from './app/views/categories'
 import WaterCan from './app/views/watercan'
 import MainScreen from './app/views/mainScreen'
 
-
-
-
-
-
-
-
 class urbanservices extends Component {
 
 renderScene(route,navigator){
@@ -93,6 +86,11 @@ configureScene(route){
     
       case 'watercan':
       return fromleft
+
+      case 'mainScreen':
+      return fromleft
+
+
   }
 
 

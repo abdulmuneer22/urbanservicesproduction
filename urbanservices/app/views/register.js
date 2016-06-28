@@ -76,7 +76,7 @@ redirect(routeName){
                               });
                     //alert("Your Account Created Successfully !!")
                    
-                    this.redirect('signin')
+                    this.redirect('login')
 
 
                     }
