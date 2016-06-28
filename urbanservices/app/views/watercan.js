@@ -13,27 +13,25 @@ import {
   TextInput,
   TouchableHighlight,
   Navigator,
-  ListView
+  ListView,
+  Image,
+  Dimensions
 } from 'react-native';
 
 import Firebase from 'firebase';
 
+const window = Dimensions.get('window');
+
 const FirebaseURL = "https://todoappmuneer.firebaseio.com/production/products/"
 var ref = new Firebase(FirebaseURL)
 
-var newSet = [{name:'C'},{name:'D'},{name:'E'}]
 
 class WaterCan extends Component {
 constructor(props){
   super(props);
-    //var ds =  new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    //newSet.push({name:'F'})
-    this.getProductDataToArray()
-    //console.log(_array.val())
+    this.getProducts()
 
     this.state = {
-      //dataSource : ds.cloneWithRows([{name:'A'},{name : 'B'}])
-      //dataSource : ds.cloneWithRows(newSet)
 
       dataSource : new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2,
@@ -44,18 +42,21 @@ constructor(props){
     }
 
 
-getProductDataToArray(){
-  //console.log(ref.val())
+getProducts(){
+
  var newRef = new Firebase(FirebaseURL)
 
  newRef.on('value',(snap)=>{
    console.log(snap.val())
-   var items = [] // We need a set here not array
+   var items = [] 
    
    snap.forEach((child)=>{
-     //console.log(child.productTitle)
+    
             items.push({
-              name : child.val().productTitle
+              name : child.val().productTitle,
+              price :child.val().price,
+              imageurl :child.val().imageurl,
+              sku : child.val().sku
               
             })
 
@@ -77,11 +78,51 @@ getProductDataToArray(){
   render(){
     return(
 
-     <View>
-     
+     <View style={styles.container}>
+      <Text></Text>
       <ListView
         dataSource = {this.state.dataSource}
-        renderRow = {(rowData)=><Text>{rowData.name}</Text>}
+        renderRow = {
+          (rowData)=>
+          
+          <View style={{borderColor:'#E0E0E0',borderWidth:1,marginBottom:20,borderRadius:1}}>
+          
+          <View style={styles.productTitleWrapper}>
+          <Text style={styles.productTitle}>
+          {rowData.name}
+          </Text>
+          
+          <Text style={{flex : 2}}></Text>
+          <Text style={styles.productPrice}>
+            {rowData.price}
+          </Text>
+          
+
+          
+          </View>
+                    
+          <Image
+              style = {styles.dpImage}
+              source = {{uri: rowData.imageurl}}
+              resizeMode = {Image.resizeMode.contain}
+          
+          />
+          <TouchableHighlight 
+          style={styles.addToCartButton}
+           onPress = {()=>{
+             alert(rowData.sku);
+           }}
+          
+          >
+            <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+          </TouchableHighlight>
+          
+          
+          </View>
+        
+      }
+      
+     
       />
     
     </View>
@@ -101,9 +142,57 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    margin:30
+    backgroundColor: '#FFFFFF',
+    
   },
+  dpImage:{
+    width : 300,
+    height : 420,
+    alignSelf:'center'
+    
+  },
+
+  productTitleWrapper:{
+  flexDirection : 'row',
+   width : window.width*0.9,
+   height : 40,
+   alignItems : 'center',
+   borderBottomColor:"#BDBDBD",
+   borderBottomWidth:1,
+   
+   
+   
+  },
+
+  productTitle:{
+    fontSize : 18,
+    color : '#37474F',
+    marginLeft : 10,
+    flex : 4
+  },
+  productPrice : {
+    fontSize : 19,
+    fontWeight : "300",
+    flex : 2,
+    marginLeft : 10
+  },
+  addToCartButton : {
+  flexDirection : 'column',
+  alignItems : 'center',
+  width: window.width * 0.9, 
+  backgroundColor : '#039BE5', 
+  height : 45,
+  borderColor : '#039BE5',
+  borderWidth : 3,
+  borderRadius : 0.5,
+  justifyContent : 'center',
+  
+  },
+  addToCartButtonText:{
+    fontSize : 16,
+    fontWeight : 'bold',
+    color : 'white'
+  }
 });
 
 

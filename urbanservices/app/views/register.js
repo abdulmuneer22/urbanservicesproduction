@@ -145,10 +145,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   input :{
-      //marginLeft : 10,
-      //marginRight : 10,
-      //marginBotton : 0,
-      //paddingBottom : 0,    
       alignItems : 'center',
       alignSelf : 'center',
       width : window.width*0.7,

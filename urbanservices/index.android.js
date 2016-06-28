@@ -91,7 +91,7 @@ configureScene(route){
      case 'categories':
       return Navigator.SceneConfigs.HorizontalSwipeJump
     
-      case 'watercanOfferView':
+      case 'watercan':
       return fromleft
   }
 
@@ -105,7 +105,7 @@ configureScene(route){
     return (
       <Navigator 
       style = {styles.mainscreen}
-      initialRoute={{name:'watercan'}}
+      initialRoute={{name:'mainScreen'}}
       renderScene={this.renderScene.bind(this)}
       //configureScene={()=>{return Navigator.SceneConfigs.FloatFromRight}}   
       configureScene={this.configureScene.bind(this)}    
@@ -118,10 +118,10 @@ configureScene(route){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    //justifyContent: 'center',
+    //alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    margin:30
+    margin:10
   },
 });
 

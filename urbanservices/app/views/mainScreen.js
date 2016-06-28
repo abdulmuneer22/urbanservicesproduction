@@ -47,7 +47,10 @@ class MainScreen extends Component {
 
              <View style={{flex : 1,alignItems:'center'}} >
               
-              <TouchableHighlight style={styles.homeButton}>
+              <TouchableHighlight 
+              style={styles.homeButton}
+              onPress={this.navigate.bind(this,'watercan')}
+              >
               <Text style={styles.homeButtonText}>Water Can</Text>
               </TouchableHighlight> 
               
