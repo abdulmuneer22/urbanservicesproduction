@@ -117,7 +117,7 @@ getProducts(){
            }}
           
           >
-            <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+          <Text style={styles.addToCartButtonText}>Add to Cart</Text>
           </TouchableHighlight>
           
           

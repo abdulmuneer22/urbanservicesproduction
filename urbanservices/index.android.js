@@ -12,7 +12,8 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  AsyncStorage
 } from 'react-native';
 
 import Root from './app/views/root'
@@ -25,11 +26,20 @@ import WaterCan from './app/views/watercan'
 import MainScreen from './app/views/mainScreen'
 
 class urbanservices extends Component {
+constructor(){
+  super();
+  
+  this.state = {
+    _initialRoute : 'login'
+  }
+
+}
+
 
 renderScene(route,navigator){
   
   if(route.name == 'mainScreen'){
-      return <MainScreen  navigator={navigator}/>
+      return <MainScreen  navigator={navigator} {...route.passProps}/>
     }
 
   
@@ -59,7 +69,7 @@ if(route.name == 'categories'){
   }
 
 if(route.name == 'watercan'){
-    return <WaterCan  navigator={navigator} {...route.passProps}/>
+    return <WaterCan  navigator={navigator} {...route.passProps} />
   }
 
 
@@ -88,7 +98,7 @@ configureScene(route){
       return fromleft
 
       case 'mainScreen':
-      return fromleft
+      return Navigator.SceneConfigs.FadeAndroid
 
 
   }
@@ -103,7 +113,7 @@ configureScene(route){
     return (
       <Navigator 
       style = {styles.mainscreen}
-      initialRoute={{name:'mainScreen'}}
+      initialRoute={{name: this.state._initialRoute}}
       renderScene={this.renderScene.bind(this)}
       //configureScene={()=>{return Navigator.SceneConfigs.FloatFromRight}}   
       configureScene={this.configureScene.bind(this)}    

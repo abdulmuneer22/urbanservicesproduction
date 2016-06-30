@@ -48,7 +48,15 @@ redirect(routeName){
 }
 
 
+onGoBackPress(routeName){
 
+  this.props.navigator.pop(
+    {
+      name:routeName
+    }
+  )
+
+}
 
 
 
@@ -91,6 +99,17 @@ redirect(routeName){
     return (
       <View style={styles.container}>
       
+      <TouchableHighlight 
+      
+      onPress = {this.onGoBackPress.bind(this,'register')}
+
+      >
+      <Text>Go Back ICON</Text>
+      </TouchableHighlight>
+
+
+
+
       <TextInput 
       style={styles.input} 
       placeholder="Email" 
@@ -120,11 +139,20 @@ redirect(routeName){
       onChangeText = {(text) => this.setState({password_confirmation:text})} 
       value={this.state.password_confirmation}
       />
-      <TouchableHighlight
-        onPress = {this.onRegisterPress.bind(this)}
+      
+      <TouchableHighlight 
+      style={styles.Button}
+      onPress = {this.onRegisterPress.bind(this)}
+
       >
-      <Text>Register</Text>
+      <Text style={styles.ButtonText}>Register</Text>
       </TouchableHighlight>
+      
+      
+      
+      
+      
+      
       
       </View>
       
@@ -154,6 +182,29 @@ const styles = StyleSheet.create({
       borderColor : 'red',
       borderWidth : 1
 
+  },
+  Button : {
+  flexDirection : 'column',
+  alignItems : 'center',
+  width: window.width * 0.7, 
+  backgroundColor : '#039BE5', 
+  height : 45,
+  borderColor : '#039BE5',
+  borderWidth : 3,
+  borderRadius : 0.5,
+  justifyContent : 'center',
+  marginBottom :10 
+  
+  },
+  SkipButton:{
+    backgroundColor : '#37474F',
+    borderColor : '#37474F'
+  },
+
+  ButtonText:{
+    fontSize : 16,
+    fontWeight : 'bold',
+    color : 'white'
   }
  
 });

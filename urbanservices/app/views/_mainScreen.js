@@ -21,7 +21,15 @@ const window  = Dimensions.get('window')
 const windowWidth = window.width
 
 class MainScreen extends Component {
+    constructor(props){
+    super(props)
     
+    this.state = {
+    //ACCESS_TOKEN : this.props.accessToken
+    }
+
+    }
+
     navigate(routeName){
 
     this.props.navigator.push({
@@ -30,9 +38,7 @@ class MainScreen extends Component {
 
     }
 
-    
-
-  componentWillMount(props){
+componentWillMount(props){
 
   var _keysize = String(this.props.accessToken).length
   
@@ -99,66 +105,26 @@ class MainScreen extends Component {
               </View>
 
 
-  }else{
-      ConditionalView = null
   }
-  
+  //console.log("Access Token is "+this.state.ACCESS_TOKEN)
+  /*
+  if(this.props.accessToken){
+    console.log("yes "+ this.props.accessToken)
+  }else{
+    console.log("No")
+  }*/
 }    
+
+    
   
 render() {
   
     
     
 return (
-
-          
-          <Image style = {styles.homeBgImage}
-          source={require('./res/home_bg.png')}>
-
-          <View style={styles.topNavBar}>
-          <Text style={styles.topNavBarTitle}>Urban Services</Text>
-          </View>
-
-          <View style={{flex : 1}}>
-
-          <View style={{flex : 1,justifyContent:'center'}} >
-          <Text style={styles.homeButtonText}>Services</Text>
-          </View>
-
-          <View style={{flex : 1,alignItems:'center'}} >
-
-          <TouchableHighlight 
-          style={styles.homeButton}
-          onPress={this.navigate.bind(this,'watercan')}
-          >
-          <Text style={styles.homeButtonText}>Water Can</Text>
-          </TouchableHighlight> 
-
-
-
-          </View>
-
-          <View style={{flex : 1,alignItems:'center'}} >
-          <TouchableHighlight style={styles.homeButton}>
-          <Text style={styles.homeButtonText}>Laundry</Text>
-          </TouchableHighlight>
-          </View>
-
-
-
-
-          {ConditionalView}
-
-
-
-          </View>
-
-
-
-
-          </Image>
-
-
+        <View>
+         {ConditionalView}
+        </View>
           );
           }
 }
