@@ -11,9 +11,10 @@ import {
   AsyncStorage,
   Dimensions
 } from 'react-native';
+
 import Firebase from 'firebase';
-
-
+import NavigationBar from './NavigationBar'
+ 
 
 const window = Dimensions.get('window');
 const ACCESS_TOKEN = 'access_token'
@@ -187,8 +188,11 @@ componentWillMount(){
 
   render() {
     return (
+     <View>
+        <NavigationBar title={"Sign In"}/>
+     
       <View style={styles.container}>
-      
+      <View style={styles.formWrapper}>
       <TextInput 
       style={styles.input} 
       placeholder="Email" 
@@ -225,10 +229,12 @@ componentWillMount(){
       <View>
       {this.state.emptyPassWordEmailError ?(<Text style={{color : '#ff1744'}}>{this.state.emptyPassWordEmailError}</Text>):(<Text></Text>)}
       </View>
+
+      </View>
       </View>
       
 
-
+</View>
 
         
       
@@ -239,15 +245,21 @@ componentWillMount(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    //backgroundColor: '#F5FCFF',
+    //height:window.height-100
   },
+  formWrapper:
+  
+  {
+    justifyContent:'center',
+    marginTop : window.height*0.2
+
+  },
+
   input :{
-      //marginLeft : 10,
-      //marginRight : 10,
-      //marginBotton : 0,
-      //paddingBottom : 0,    
+      
       alignItems : 'center',
       alignSelf : 'center',
       width : window.width*0.7,
@@ -268,7 +280,8 @@ const styles = StyleSheet.create({
   borderWidth : 3,
   borderRadius : 0.5,
   justifyContent : 'center',
-  marginBottom :10 
+  marginBottom :10,
+  marginTop : 10
   
   },
   SkipButton:{

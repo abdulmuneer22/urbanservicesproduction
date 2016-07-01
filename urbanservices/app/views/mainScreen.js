@@ -14,7 +14,7 @@ import {
 
 var ConditionalView = null
 
-
+import NavigationBar from './NavigationBar'
 
 import Dimensions from 'Dimensions'
 const window  = Dimensions.get('window')
@@ -106,7 +106,10 @@ class MainScreen extends Component {
 }    
   
 render() {
-  
+  /*<View style={styles.topNavBar}>
+          <Text style={styles.topNavBarTitle}>Urban Services</Text>
+          </View>
+*/
     
     
 return (
@@ -115,10 +118,9 @@ return (
           <Image style = {styles.homeBgImage}
           source={require('./res/home_bg.png')}>
 
-          <View style={styles.topNavBar}>
-          <Text style={styles.topNavBarTitle}>Urban Services</Text>
-          </View>
-
+          <NavigationBar title={"Urban Services"}/>
+          
+         
           <View style={{flex : 1}}>
 
           <View style={{flex : 1,justifyContent:'center'}} >

@@ -19,8 +19,6 @@ import {
   Dimensions
 } from 'react-native';
 
-import NavigationBar from './NavigationBar'
-
 import Firebase from 'firebase';
 
 const window = Dimensions.get('window');
@@ -82,7 +80,6 @@ getProducts(){
     return(
 
      <View style={styles.container}>
-      <NavigationBar title={"Select A Product"}/>
       <Text></Text>
       <ScrollView showsVerticalScrollIndicator = {false}>
 

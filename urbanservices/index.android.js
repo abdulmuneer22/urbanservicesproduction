@@ -17,13 +17,13 @@ import {
 } from 'react-native';
 
 import Root from './app/views/root'
-//import Landingpage from './app/views/home'
 import Register from './app/views/register'
 import LogIn from './app/views/login'
 import MyAccount from './app/views/myAccount'
 import Categories from './app/views/categories'
 import WaterCan from './app/views/watercan'
 import MainScreen from './app/views/mainScreen'
+
 
 class urbanservices extends Component {
 constructor(){
@@ -72,7 +72,14 @@ if(route.name == 'watercan'){
     return <WaterCan  navigator={navigator} {...route.passProps} />
   }
 
+if(route.name == 'navbar'){
+    return <NavBar  navigator={navigator} {...route.passProps} />
+  }
 
+
+if(route.name == 'testview'){
+    return <TestView  navigator={navigator} {...route.passProps} />
+  }
 
   
 }
@@ -111,6 +118,7 @@ configureScene(route){
 
   render() {
     return (
+      
       <Navigator 
       style = {styles.mainscreen}
       initialRoute={{name: this.state._initialRoute}}
