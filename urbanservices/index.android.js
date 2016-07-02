@@ -23,6 +23,7 @@ import MyAccount from './app/views/myAccount'
 import Categories from './app/views/categories'
 import WaterCan from './app/views/watercan'
 import MainScreen from './app/views/mainScreen'
+import MyCart from './app/views/myCart'
 
 
 class urbanservices extends Component {
@@ -30,7 +31,7 @@ constructor(){
   super();
   
   this.state = {
-    _initialRoute : 'login'
+    _initialRoute : 'myCart'
   }
 
 }
@@ -77,6 +78,12 @@ if(route.name == 'navbar'){
   }
 
 
+if(route.name == 'myCart'){
+    return <MyCart  navigator={navigator} {...route.passProps} />
+  }
+
+
+
 if(route.name == 'testview'){
     return <TestView  navigator={navigator} {...route.passProps} />
   }
@@ -106,6 +113,10 @@ configureScene(route){
 
       case 'mainScreen':
       return Navigator.SceneConfigs.FadeAndroid
+
+       case 'myCart':
+      return Navigator.SceneConfigs.FadeAndroid
+
 
 
   }

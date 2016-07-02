@@ -16,7 +16,8 @@ import {
   ListView,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
+  alert
 } from 'react-native';
 
 import Firebase from 'firebase';
@@ -25,110 +26,62 @@ const window = Dimensions.get('window');
 
 const FirebaseURL = "https://todoappmuneer.firebaseio.com/production/products/"
 var ref = new Firebase(FirebaseURL)
+var AlertTile = "Thank You"
+var 
 
+class MyCart extends Component {
 
-class WaterCan extends Component {
-constructor(props){
-  super(props);
-    this.getProducts()
-
-    this.state = {
-
-      dataSource : new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2,
-
-      })
-      }
-
-    }
-
-
-getProducts(){
-
- var newRef = new Firebase(FirebaseURL)
-
- newRef.on('value',(snap)=>{
-   console.log(snap.val())
-   var items = [] 
-   
-   snap.forEach((child)=>{
-    
-            items.push({
-              name : child.val().productTitle,
-              price :child.val().price,
-              imageurl :child.val().imageurl,
-              sku : child.val().sku
-              
-            })
-
-            })
-
-  this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(items)
-      });
-  
-
-   
-
- })
-
-
+onCheckout(){
+  Alert.alert()
 }
 
+/*
+<Image
+              style = {styles.dpImage}
+              source = {{uri: this.props.rowData.imageurl}}
+              resizeMode = {Image.resizeMode.contain}
+          
+          />
 
+        <Text>{this.props.rowData.sku}</Text>
+        <Text>{this.props.rowData.name}</Text>
+
+
+*/
   render(){
     return(
 
      <View style={styles.container}>
-      <Text></Text>
-      <ScrollView showsVerticalScrollIndicator = {false}>
 
-      <ListView
-        dataSource = {this.state.dataSource}
-        renderRow = {
-          (rowData)=>
-          
-          <View style={{borderColor:'#E0E0E0',borderWidth:1,marginBottom:20,borderRadius:1}}>
-          
-          <View style={styles.productTitleWrapper}>
-          <Text style={styles.productTitle}>
-          {rowData.name}
-          </Text>
-          
-          <Text style={{flex : 2}}></Text>
-          <Text style={styles.productPrice}>
-            {rowData.price}
-          </Text>
-          
-
-          
-          </View>
-                    
-          <Image
+       <View style={styles.cartItemsWrapper}>
+              <View style={styles.cartItemsImageWrapper}>
+              <Image
               style = {styles.dpImage}
-              source = {{uri: rowData.imageurl}}
+              source = {{uri: 'http://4.imimg.com/data4/OF/BI/MY-23505475/mineral-water-can-250x250.jpg'}}
               resizeMode = {Image.resizeMode.contain}
           
-          />
-          <TouchableHighlight 
-          style={styles.addToCartButton}
-           onPress = {()=>{
-             alert(rowData.sku);
-           }}
-          
-          >
-          <Text style={styles.addToCartButtonText}>Add to Cart</Text>
-          </TouchableHighlight>
-          
-          
-          </View>
-        
-      }
-      
-     
-      />
+            />
+              </View>
+              <View style={styles.cart}>
+              <Text style={{fontSize:18,fontWeight:'bold',marginBottom:10}}>AquaFina - 25 Ltr</Text>
+              
+              <Text style={{textAlign:'center'}}>Reverse osmosised hygeninc mineral water from aquafina</Text>
+              <Text style={{color:'red',marginTop : 20,fontSize : 18}}>Rs . 80</Text>
+              </View>
 
-      </ScrollView>
+                
+
+       </View>
+
+        <TouchableHighlight 
+                style={[styles.Button,styles.SkipButton]}
+                onPress = 
+                {this.onCheckout.bind(this)}
+
+                >
+                <Text style={styles.ButtonText}> Check Out</Text>
+                </TouchableHighlight>
+
     
     </View>
     );
@@ -145,60 +98,64 @@ getProducts(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F5F5F5',
+    flexDirection : 'column'
     
   },
   dpImage:{
-    width : 300,
-    height : 420,
+    width : 120,
+    height : 140,
     alignSelf:'center'
     
   },
-
-  productTitleWrapper:{
-  flexDirection : 'row',
-   width : window.width*0.9,
-   height : 40,
-   alignItems : 'center',
-   borderBottomColor:"#BDBDBD",
-   borderBottomWidth:1,
-   
-   
-   
+  cartItemsWrapper:{
+    flexDirection : 'row',
+    //borderColor : '#FAFAFA',
+    //borderWidth : 1,
+    width:window.width*0.95,
+    height : 150,
+    backgroundColor : '#FFFFFF',
+    marginTop : 20
+    
+    //marginLeft : 20,
+    //marginRight : 20
+    //alignSelf : 'center'
   },
-
-  productTitle:{
-    fontSize : 18,
-    color : '#37474F',
-    marginLeft : 10,
-    flex : 4
+  cartItemsImageWrapper:{
+    flex : 5,
+    //borderColor : 'red',
+    //borderWidth : 1
   },
-  productPrice : {
-    fontSize : 19,
-    fontWeight : "300",
-    flex : 2,
-    marginLeft : 10
+  cart:{
+    flex : 8,
+    //borderColor : 'green',
+    //borderWidth : 1,
+    marginTop : 20,
+    alignItems : 'center'
   },
-  addToCartButton : {
+  Button : {
   flexDirection : 'column',
   alignItems : 'center',
-  width: window.width * 0.9, 
+  width: window.width * 0.95, 
   backgroundColor : '#039BE5', 
   height : 45,
   borderColor : '#039BE5',
   borderWidth : 3,
   borderRadius : 0.5,
   justifyContent : 'center',
+  marginBottom :10,
+  marginTop : 10
   
   },
-  addToCartButtonText:{
+  ButtonText:{
     fontSize : 16,
     fontWeight : 'bold',
     color : 'white'
   }
+  
 });
 
 
-export default WaterCan
+export default MyCart

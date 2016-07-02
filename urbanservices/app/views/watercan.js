@@ -45,6 +45,26 @@ constructor(props){
     }
 
 
+
+redirect(routeName,token){
+
+  this.props.navigator.push(
+    {
+      name:routeName,
+      passProps:{
+        rowData : token
+      }
+    }
+    )
+
+
+}
+
+
+addToCartButtonPressd(rowData){
+this.redirect('myCart',rowData)
+}
+
 getProducts(){
 
  var newRef = new Firebase(FirebaseURL)
@@ -115,9 +135,7 @@ getProducts(){
           />
           <TouchableHighlight 
           style={styles.addToCartButton}
-           onPress = {()=>{
-             alert(rowData.sku);
-           }}
+           onPress = {this.addToCartButtonPressd.bind(this,rowData)}
           
           >
           <Text style={styles.addToCartButtonText}>Add to Cart</Text>
